@@ -25,13 +25,11 @@ jobs:
       uses: actions/cache@v2
       with:
         path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
+          ~/gradletest/.gradle/caches
+          ~/gradletest/.gradle/wrapper
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
-    - name: Grant execute permission for gradlew
-      run: chmod +x ~/gradletest/gradlew
     - name: Build with Gradle
       run: ~/gradletest/gradlew build
     - name: Cleanup Gradle Cache
